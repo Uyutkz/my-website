@@ -1,1 +1,1662 @@
+MN, [10.10.2026 19:57]
+<!DOCTYPE html>
 
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Уют KZ — твоя уютная сеть</title>
+
+<meta name="description" content="Уют KZ — место для общения, друзей и публикаций.">
+
+<style>
+
+:root {
+
+  --bg:#eef2f7;
+
+  --card:#ffffff;
+
+  --text:#202735;
+
+  --muted:#7b8798;
+
+  --blue:#3478f6;
+
+  --border:#e1e7ef;
+
+  --hover:#edf4ff;
+
+}
+
+body.dark {
+
+  --bg:#111722;
+
+  --card:#1c2533;
+
+  --text:#f0f4fa;
+
+  --muted:#a1aec0;
+
+  --blue:#5592ff;
+
+  --border:#303b4c;
+
+  --hover:#29364a;
+
+}
+
+* { box-sizing:border-box; }
+
+body {
+
+  margin:0;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  transition:background .2s,color .2s;
+
+}
+
+button,input,textarea { font:inherit; }
+
+button { cursor:pointer; }
+
+.topbar {
+
+  height:65px;
+
+  position:sticky;
+
+  top:0;
+
+  z-index:10;
+
+  background:var(--card);
+
+  border-bottom:1px solid var(--border);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:18px;
+
+  padding:0 max(16px,calc((100% - 1150px)/2));
+
+}
+
+.logo {
+
+  color:var(--blue);
+
+  font-size:25px;
+
+  font-weight:800;
+
+  white-space:nowrap;
+
+  cursor:pointer;
+
+}
+
+.search-wrap { flex:1; }
+
+.search-wrap input {
+
+  width:100%;
+
+  max-width:450px;
+
+  padding:11px 15px;
+
+  border-radius:12px;
+
+  background:var(--bg);
+
+  border:1px solid var(--border);
+
+  color:var(--text);
+
+  outline:none;
+
+}
+
+.top-button {
+
+  border:0;
+
+  border-radius:10px;
+
+  background:var(--hover);
+
+  color:var(--blue);
+
+  padding:10px 13px;
+
+}
+
+.layout {
+
+  max-width:1150px;
+
+  margin:24px auto;
+
+  padding:0 16px;
+
+  display:grid;
+
+  grid-template-columns:210px minmax(0,1fr);
+
+  gap:22px;
+
+  align-items:start;
+
+}
+
+.sidebar {
+
+  position:sticky;
+
+  top:85px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:5px;
+
+}
+
+.nav-btn {
+
+  width:100%;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:12px;
+
+  text-align:left;
+
+  padding:13px 14px;
+
+  border:0;
+
+  border-radius:11px;
+
+  background:transparent;
+
+  color:var(--text);
+
+  font-size:15px;
+
+}
+
+.nav-btn:hover,.nav-btn.active {
+
+  background:var(--card);
+
+  color:var(--blue);
+
+}
+
+.nav-icon { width:23px;text-align:center;font-size:19px; }
+
+main { min-width:0; }
+
+.page { display:none; }
+
+.page.active { display:block; }
+
+.card {
+
+  background:var(--card);
+
+  border:1px solid var(--border);
+
+  border-radius:16px;
+
+  padding:20px;
+
+  margin-bottom:17px;
+
+  min-width:0;
+
+}
+
+h1,h2,h3 { margin-top:0; }
+
+h1 { font-size:26px; }
+
+h2 { font-size:20px; }
+
+h3 { font-size:16px; }
+
+p { line-height:1.55; }
+
+.muted { color:var(--muted);font-size:14px; }
+
+.hero {
+
+  padding:30px;
+
+  border-radius:16px;
+
+  margin-bottom:17px;
+
+  color:white;
+
+  background:linear-gradient(125deg,#3478f6,#8058db);
+
+}
+
+.hero h1 { font-size:32px;margin-bottom:10px; }
+
+.hero p { max-width:500px; }
+
+.hero button {
+
+  background:white;
+
+  color:#3478f6;
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:12px 17px;
+
+  font-weight:bold;
+
+}
+
+.primary,.secondary,.danger {
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:11px 15px;
+
+}
+
+.primary { background:var(--blue);color:white; }
+
+.secondary { background:var(--hover);color:var(--text); }
+
+.danger { background:#ffe9e9;color:#c62828; }
+
+input,textarea {
+
+  width:100%;
+
+  border:1px solid var(--border);
+
+  border-radius:10px;
+
+  padding:12px;
+
+  color:var(--text);
+
+  background:var(--bg);
+
+  outline:none;
+
+}
+
+input:focus,textarea:focus { border-color:var(--blue); }
+
+textarea { resize:vertical;min-height:95px; }
+
+.composer-actions {
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+
+  margin-top:10px;
+
+}
+
+.post {
+
+  border-top:1px solid var(--border);
+
+  padding-top:17px;
+
+  margin-top:17px;
+
+}
+
+.post-head {
+
+  display:flex;
+
+  gap:11px;
+
+  align-items:center;
+
+  margin-bottom:12px;
+
+}
+
+.avatar {
+
+  width:45px;
+
+  height:45px;
+
+  border-radius:50%;
+
+  background:linear-gradient(135deg,#c8ddff,#8cafff);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  color:#234f9c;
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  flex-shrink:0;
+
+}
+
+.
+MN, [10.10.2026 19:57]
+post-name { font-weight:bold; }
+
+.post-date { color:var(--muted);font-size:12px;margin-top:4px; }
+
+.post-text { white-space:pre-wrap;overflow-wrap:anywhere; }
+
+.post-actions {
+
+  display:flex;
+
+  gap:8px;
+
+  flex-wrap:wrap;
+
+  margin-top:13px;
+
+}
+
+.post-actions button {
+
+  background:var(--bg);
+
+  color:var(--text);
+
+  border:1px solid var(--border);
+
+  border-radius:9px;
+
+  padding:8px 12px;
+
+}
+
+.post-actions button.liked { color:#e04471; }
+
+.profile-cover {
+
+  height:155px;
+
+  border-radius:12px;
+
+  background:linear-gradient(120deg,#3478f6,#9a6be8,#efb5d5);
+
+  margin-bottom:-43px;
+
+}
+
+.profile-info {
+
+  position:relative;
+
+  padding:0 12px;
+
+}
+
+.profile-avatar {
+
+  width:90px;
+
+  height:90px;
+
+  border-radius:50%;
+
+  background:var(--card);
+
+  border:5px solid var(--card);
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  font-size:40px;
+
+  margin-bottom:12px;
+
+}
+
+.profile-stats {
+
+  display:flex;
+
+  gap:25px;
+
+  flex-wrap:wrap;
+
+  margin-top:18px;
+
+}
+
+.stat strong { display:block;font-size:20px; }
+
+.stat span { color:var(--muted);font-size:13px; }
+
+.people-grid {
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fill,minmax(175px,1fr));
+
+  gap:12px;
+
+}
+
+.person {
+
+  background:var(--bg);
+
+  border:1px solid var(--border);
+
+  border-radius:13px;
+
+  padding:17px 12px;
+
+  text-align:center;
+
+}
+
+.person .avatar { margin:0 auto 10px;width:58px;height:58px; }
+
+.person strong { display:block;margin-bottom:6px; }
+
+.person button { margin-top:10px;width:100%; }
+
+.message-list {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+
+}
+
+.message-row {
+
+  padding:13px;
+
+  background:var(--bg);
+
+  border-radius:12px;
+
+  display:flex;
+
+  gap:12px;
+
+  align-items:center;
+
+  cursor:pointer;
+
+}
+
+.message-row:hover { background:var(--hover); }
+
+.message-content { flex:1;min-width:0; }
+
+.message-content strong { display:block;margin-bottom:5px; }
+
+.message-content p {
+
+  margin:0;
+
+  color:var(--muted);
+
+  font-size:13px;
+
+  overflow-wrap:anywhere;
+
+}
+
+.chat-box {
+
+  border:1px solid var(--border);
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+}
+
+.chat-title {
+
+  padding:14px;
+
+  background:var(--bg);
+
+  border-bottom:1px solid var(--border);
+
+  font-weight:bold;
+
+}
+
+.chat-messages {
+
+  min-height:180px;
+
+  max-height:350px;
+
+  overflow-y:auto;
+
+  padding:14px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+
+}
+
+.chat-bubble {
+
+  background:var(--bg);
+
+  border-radius:12px;
+
+  padding:10px 12px;
+
+  max-width:85%;
+
+  align-self:flex-start;
+
+  overflow-wrap:anywhere;
+
+}
+
+.chat-bubble.mine {
+
+  background:var(--blue);
+
+  color:white;
+
+  align-self:flex-end;
+
+}
+
+.chat-compose {
+
+  display:flex;
+
+  gap:8px;
+
+  padding:12px;
+
+  border-top:1px solid var(--border);
+
+}
+
+.chat-compose input { min-width:0; }
+
+.setting-row {
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:15px 0;
+
+  border-bottom:1px solid var(--border);
+
+}
+
+.setting-row:last-child { border-bottom:0; }
+
+.setting-row p { margin:5px 0 0; }
+
+.switch {
+
+  width:48px;
+
+  height:27px;
+
+  border-radius:30px;
+
+  background:#aeb8c7;
+
+  border:0;
+
+  padding:3px;
+
+  flex-shrink:0;
+
+}
+
+.switch span {
+
+  width:21px;
+
+  height:21px;
+
+  border-radius:50%;
+
+  background:white;
+
+  display:block;
+
+  transition:transform .2s;
+
+}
+
+.switch.on { background:var(--blue); }
+
+.switch.on span { transform:translateX(21px); }
+
+.empty {
+
+  padding:24px 10px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+}
+
+.footer {
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:12px;
+
+  padding:10px 0 25px;
+
+}
+
+.notice {
+
+  display:none;
+
+  background:var(--hover);
+
+  color:var(--text);
+
+  border:1px solid var(--border);
+
+  padding:12px 15px;
+
+  border-radius:10px;
+
+  margin-bottom:15px;
+
+}
+
+.notice.show { display:block; }
+
+.small { font-size:12px; }
+
+@media(max-width:720px) {
+
+  .topbar { gap:9px;padding:0 12px;height:59px; }
+
+  .logo { font-size:21px; }
+
+  .search-wrap input { padding:10px;font-size:13px; }
+
+  .top-button { padding:9px; }
+
+  .layout {
+
+    display:block;
+
+    margin:14px auto;
+
+    padding:0 11px;
+
+  }
+
+  .
+MN, [10.10.2026 19:57]
+sidebar {
+
+    position:static;
+
+    display:flex;
+
+    flex-direction:row;
+
+    overflow-x:auto;
+
+    gap:5px;
+
+    margin-bottom:14px;
+
+    padding-bottom:5px;
+
+  }
+
+  .nav-btn {
+
+    width:auto;
+
+    flex-shrink:0;
+
+    padding:10px 12px;
+
+    font-size:13px;
+
+    gap:7px;
+
+  }
+
+  .nav-icon { font-size:17px;width:auto; }
+
+  .card { padding:15px;border-radius:13px; }
+
+  .hero { padding:23px 19px; }
+
+  .hero h1 { font-size:26px; }
+
+  h1 { font-size:23px; }
+
+  .profile-cover { height:120px; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+  <div class="logo" onclick="showPage('home')">Уют KZ</div>
+
+  <div class="search-wrap">
+
+    <input id="searchInput" type="search" placeholder="Поиск публикаций..." oninput="searchPosts()">
+
+  </div>
+
+  <button class="top-button" onclick="showPage('messages')" aria-label="Сообщения">✉️</button>
+
+</header>
+
+<div class="layout">
+
+  <nav class="sidebar">
+
+    <button class="nav-btn active" data-page="home" onclick="showPage('home')"><span class="nav-icon">🏠</span> Главная</button>
+
+    <button class="nav-btn" data-page="profile" onclick="showPage('profile')"><span class="nav-icon">👤</span> Моя страница</button>
+
+    <button class="nav-btn" data-page="news" onclick="showPage('news')"><span class="nav-icon">📰</span> Публикации</button>
+
+    <button class="nav-btn" data-page="messages" onclick="showPage('messages')"><span class="nav-icon">✉️</span> Сообщения</button>
+
+    <button class="nav-btn" data-page="friends" onclick="showPage('friends')"><span class="nav-icon">👥</span> Друзья</button>
+
+    <button class="nav-btn" data-page="photos" onclick="showPage('photos')"><span class="nav-icon">📷</span> Фото</button>
+
+    <button class="nav-btn" data-page="groups" onclick="showPage('groups')"><span class="nav-icon">🌐</span> Сообщества</button>
+
+    <button class="nav-btn" data-page="settings" onclick="showPage('settings')"><span class="nav-icon">⚙️</span> Настройки</button>
+
+  </nav>
+
+  <main>
+
+    <div id="notice" class="notice"></div>
+
+    <section id="page-home" class="page active">
+
+      <div class="hero">
+
+        <h1>Добро пожаловать в Уют KZ!</h1>
+
+        <p>Твоё место для общения, новых знакомств и интересных публикаций.</p>
+
+        <button onclick="showPage('news')">Перейти к публикациям →</button>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Что нового?</h2>
+
+        <p class="muted">Поделись своими мыслями с другими.</p>
+
+        <textarea id="homePostText" placeholder="О чём ты думаешь?"></textarea>
+
+        <div class="composer-actions">
+
+          <span class="muted small">Твоя запись появится в ленте</span>
+
+          <button class="primary" onclick="createPost('homePostText')">Опубликовать</button>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Последние публикации</h2>
+
+        <div id="homePosts"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-profile" class="page">
+
+      <div class="card">
+
+        <div class="profile-cover"></div>
+
+        <div class="profile-info">
+
+          <div class="profile-avatar">🙂</div>
+
+          <h1 id="profileDisplayName">Моя страница</h1>
+
+          <p id="profileBio" class="muted">Добро пожаловать на мою страницу в Уют KZ!</p>
+
+          <div class="profile-stats">
+
+            <div class="stat"><strong id="myPostCount">0</strong><span>публикаций</span></div>
+
+            <div class="stat"><strong id="friendCount">0</strong><span>друзей</span></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Мои публикации</h2>
+
+        <div id="profilePosts"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-news" class="page">
+
+      <div class="card">
+
+        <h1>Публикации</h1>
+
+        <p class="muted">Делись новостями и интересными мыслями.</p>
+
+        <textarea id="newsPostText" placeholder="Напиши что-нибудь..."></textarea>
+
+        <div class="composer-actions">
+
+          <span class="muted small">Текст увидишь в своей ленте</span>
+
+          <button class="primary" onclick="createPost('newsPostText')">Опубликовать</button>
+MN, [10.10.2026 19:57]
+</div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Лента</h2>
+
+        <div id="newsPosts"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-messages" class="page">
+
+      <div class="card">
+
+        <h1>Сообщения</h1>
+
+        <p class="muted">Демо-переписка для проверки интерфейса.</p>
+
+        <div class="message-list" id="messageList"></div>
+
+      </div>
+
+      <div class="card" id="chatCard" style="display:none">
+
+        <div class="chat-box">
+
+          <div class="chat-title" id="chatTitle">Переписка</div>
+
+          <div class="chat-messages" id="chatMessages"></div>
+
+          <div class="chat-compose">
+
+            <input id="chatInput" placeholder="Напиши сообщение..." onkeydown="if(event.key==='Enter')sendMessage()">
+
+            <button class="primary" onclick="sendMessage()">Отправить</button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="page-friends" class="page">
+
+      <div class="card">
+
+        <h1>Друзья</h1>
+
+        <p class="muted">Добавляй людей в свой список друзей.</p>
+
+        <div id="friendsGrid" class="people-grid"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-photos" class="page">
+
+      <div class="card">
+
+        <h1>Фотографии</h1>
+
+        <p class="muted">Выбери фотографию на своём устройстве, чтобы показать её в этой галерее.</p>
+
+        <input id="photoInput" type="file" accept="image/*" onchange="addPhoto(event)">
+
+        <div id="photoGallery" class="people-grid" style="margin-top:16px"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-groups" class="page">
+
+      <div class="card">
+
+        <h1>Сообщества</h1>
+
+        <p class="muted">Выбирай интересные сообщества.</p>
+
+        <div id="groupsGrid" class="people-grid"></div>
+
+      </div>
+
+    </section>
+
+    <section id="page-settings" class="page">
+
+      <div class="card">
+
+        <h1>Настройки</h1>
+
+        <div class="setting-row">
+
+          <div>
+
+            <strong>Тёмная тема</strong>
+
+            <p class="muted">Измени оформление сайта.</p>
+
+          </div>
+
+          <button id="themeSwitch" class="switch" onclick="toggleTheme()" aria-label="Переключить тему"><span></span></button>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Профиль</h2>
+
+        <label for="nameInput">Твоё имя</label>
+
+        <input id="nameInput" maxlength="40" placeholder="Как тебя зовут?" style="margin:8px 0 14px">
+
+        <label for="bioInput">О себе</label>
+
+        <textarea id="bioInput" maxlength="250" placeholder="Расскажи немного о себе..." style="margin:8px 0 14px"></textarea>
+
+        <button class="primary" onclick="saveProfile()">Сохранить изменения</button>
+
+      </div>
+
+      <div class="card">
+
+        <h2>Данные сайта</h2>
+
+        <p class="muted">Публикации, настройки и демо-переписки сохраняются в браузере на этом устройстве.</p>
+
+        <button class="danger" onclick="clearLocalData()">Удалить локальные данные</button>
+
+      </div>
+
+    </section>
+
+    <div class="footer">Уют KZ © 2026 · Твоё пространство для общения</div>
+
+  </main>
+
+</div>
+
+<script>
+
+const STORE_KEY = "uyut_kz_site_v1";
+
+const defaultData = {
+
+  name: "Пользователь",
+
+  bio: "Добро пожаловать на мою страницу в Уют KZ!",
+
+  dark: false,
+
+  posts: [
+
+    {
+
+      id: 1,
+
+      text: "Добро пожаловать в Уют KZ! 🏡\nЗдесь можно делиться мыслями, находить друзей и создавать свои публикации.",
+
+      date: new Date().toISOString(),
+
+      likes: 0,
+
+      liked: false
+
+    }
+
+  ],
+
+  friends: [],
+
+  groups: [],
+
+  messages: {},
+
+  photos: []
+
+};
+
+function loadData() {
+
+  try {
+
+    const saved = localStorage.getItem(STORE_KEY);
+
+    if (!saved) return structuredClone(defaultData);
+
+    const data = JSON.parse(saved);
+
+    return {
+
+      ...structuredClone(defaultData),
+
+      ...data,
+
+      posts: Array.isArray(data.posts) ? data.posts : [],
+
+      friends: Array.isArray(data.friends) ? data.friends : [],
+
+      groups: Array.isArray(data.groups) ? data.groups : [],
+
+      photos: Array.isArray(data.photos) ? data.photos : [],
+MN, [10.10.2026 19:57]
+date: new Date().toISOString(),
+
+    likes: 0,
+
+    liked: false
+
+  });
+
+  input.value = "";
+
+  saveData();
+
+  renderPosts();
+
+  showNotice("Публикация добавлена!");
+
+}
+
+function toggleLike(id) {
+
+  const post = data.posts.find(item => item.id === id);
+
+  if (!post) return;
+
+  post.liked = !post.liked;
+
+  post.likes = Math.max(0, (post.likes || 0) + (post.liked ? 1 : -1));
+
+  saveData();
+
+  renderPosts();
+
+}
+
+function deletePost(id) {
+
+  if (!confirm("Удалить эту публикацию?")) return;
+
+  data.posts = data.posts.filter(post => post.id !== id);
+
+  saveData();
+
+  renderPosts();
+
+  showNotice("Публикация удалена.");
+
+}
+
+function searchPosts() {
+
+  activeSearch = document.getElementById("searchInput").value.trim();
+
+  renderPosts();
+
+  if (activeSearch) {
+
+    const current = document.querySelector(".page.active");
+
+    if (current && current.id !== "page-news") showPage("news");
+
+  }
+
+}
+
+function renderProfile() {
+
+  document.getElementById("profileDisplayName").textContent = data.name;
+
+  document.getElementById("profileBio").textContent = data.bio || "Пока ничего не указано.";
+
+  document.getElementById("nameInput").value = data.name;
+
+  document.getElementById("bioInput").value = data.bio;
+
+  document.getElementById("friendCount").textContent = data.friends.length;
+
+  renderPosts();
+
+}
+
+function saveProfile() {
+
+  const name = document.getElementById("nameInput").value.trim();
+
+  const bio = document.getElementById("bioInput").value.trim();
+
+  if (!name) {
+
+    showNotice("Введи имя.");
+
+    return;
+
+  }
+
+  data.name = name;
+
+  data.bio = bio;
+
+  saveData();
+
+  renderProfile();
+
+  renderPosts();
+
+  showNotice("Профиль сохранён.");
+
+}
+
+function renderFriends() {
+
+  document.getElementById("friendCount").textContent = data.friends.length;
+
+  document.getElementById("friendsGrid").innerHTML = people.map(person => {
+
+    const added = data.friends.includes(person.id);
+
+    return `
+
+      <div class="person">
+
+        <div class="avatar">${person.emoji}</div>
+
+        <strong>${escapeHTML(person.name)}</strong>
+
+        <span class="muted small">Участник Уют KZ</span>
+
+        <button class="${added ? "secondary" : "primary"}"
+
+          onclick="toggleFriend(${person.id})">
+
+          ${added ? "✓ В друзьях" : "＋ Добавить"}
+
+        </button>
+
+        <button class="secondary" onclick="openChat(${person.id})">✉ Написать</button>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+function toggleFriend(id) {
+
+  if (data.friends.includes(id)) {
+
+    data.friends = data.friends.filter(item => item !== id);
+
+    showNotice("Пользователь удалён из друзей.");
+
+  } else {
+
+    data.friends.push(id);
+
+    showNotice("Пользователь добавлен в друзья.");
+
+  }
+
+  saveData();
+
+  renderFriends();
+
+  document.getElementById("friendCount").textContent = data.friends.length;
+
+}
+
+function renderMessages() {
+
+  const el = document.getElementById("messageList");
+
+  el.innerHTML = people.map(person => {
+
+    const history = data.messages[person.id] || [];
+
+    const last = history.length ? history[history.length - 1].text : "Начни переписку";
+
+    return `
+
+      <div class="message-row" onclick="openChat(${person.id})">
+
+        <div class="avatar">${person.emoji}</div>
+
+        <div class="message-content">
+
+          <strong>${escapeHTML(person.name)}</strong>
+
+          <p>${escapeHTML(last)}</p>
+
+        </div>
+
+        <span>›</span>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+function openChat(id) {
+
+  currentChat = id;
+
+  const person = people.find(item => item.id === id);
+
+  if (!person) return;
+
+  showPage("messages");
+
+  document.getElementById("chatCard").style.display = "block";
+
+  document.getElementById("chatTitle").textContent = "Переписка с " + person.name;
+
+  renderChatMessages();
+
+  document.getElementById("chatInput").focus();
+
+}
+
+function renderChatMessages() {
+
+  if (currentChat === null) return;
+
+  const el = document.getElementById("chatMessages");
+
+  const history = data.messages[currentChat] || [];
+
+  el.innerHTML = history.length
+
+    ? history.map(message => `
+
+      <div class="chat-bubble ${message.mine ? "mine" : ""}">
+MN, [10.10.2026 19:57]
+${escapeHTML(message.text)}
+
+        <div class="small" style="opacity:.7;margin-top:5px">${escapeHTML(formatDate(message.date))}</div>
+
+      </div>
+
+    `).join("")
+
+    : '<div class="empty">Сообщений пока нет. Напиши первым!</div>';
+
+  el.scrollTop = el.scrollHeight;
+
+}
+
+function sendMessage() {
+
+  if (currentChat === null) {
+
+    showNotice("Сначала выбери собеседника.");
+
+    return;
+
+  }
+
+  const input = document.getElementById("chatInput");
+
+  const text = input.value.trim();
+
+  if (!text) return;
+
+  if (!data.messages[currentChat]) data.messages[currentChat] = [];
+
+  data.messages[currentChat].push({
+
+    text,
+
+    mine:true,
+
+    date:new Date().toISOString()
+
+  });
+
+  input.value = "";
+
+  saveData();
+
+  renderChatMessages();
+
+  renderMessages();
+
+}
+
+function renderGroups() {
+
+  document.getElementById("groupsGrid").innerHTML = groups.map(group => {
+
+    const joined = data.groups.includes(group.id);
+
+    return `
+
+      <div class="person">
+
+        <div style="font-size:38px;margin-bottom:10px">${group.emoji}</div>
+
+        <strong>${escapeHTML(group.name)}</strong>
+
+        <p class="muted">${escapeHTML(group.desc)}</p>
+
+        <button class="${joined ? "secondary" : "primary"}"
+
+          onclick="toggleGroup(${group.id})">
+
+          ${joined ? "✓ Вы подписаны" : "＋ Подписаться"}
+
+        </button>
+
+      </div>
+
+    `;
+
+  }).join("");
+
+}
+
+function toggleGroup(id) {
+
+  if (data.groups.includes(id)) {
+
+    data.groups = data.groups.filter(item => item !== id);
+
+    showNotice("Вы отписались от сообщества.");
+
+  } else {
+
+    data.groups.push(id);
+
+    showNotice("Вы подписались на сообщество.");
+
+  }
+
+  saveData();
+
+  renderGroups();
+
+}
+
+function addPhoto(event) {
+
+  const file = event.target.files && event.target.files[0];
+
+  if (!file) return;
+
+  if (!file.type.startsWith("image/")) {
+
+    showNotice("Выбери файл изображения.");
+
+    return;
+
+  }
+
+  if (file.size > 1500000) {
+
+    showNotice("Выбери изображение размером до 1,5 МБ.");
+
+    event.target.value = "";
+
+    return;
+
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function() {
+
+    data.photos.push({
+
+      id:Date.now(),
+
+      src:reader.result,
+
+      name:file.name
+
+    });
+
+    saveData();
+
+    renderPhotos();
+
+    showNotice("Фотография добавлена.");
+
+    event.target.value = "";
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+function renderPhotos() {
+
+  const el = document.getElementById("photoGallery");
+
+  if (!data.photos.length) {
+
+    el.innerHTML = '<div class="empty">Здесь пока нет фотографий.</div>';
+
+    return;
+
+  }
+
+  el.innerHTML = data.photos.map(photo => `
+
+    <div class="person">
+
+      <img src="${photo.src}" alt="${escapeHTML(photo.name)}"
+
+        style="width:100%;height:150px;object-fit:cover;border-radius:9px">
+
+      <p class="small">${escapeHTML(photo.name)}</p>
+
+      <button class="danger" onclick="deletePhoto(${photo.id})">Удалить</button>
+
+    </div>
+
+  `).join("");
+
+}
+
+function deletePhoto(id) {
+
+  data.photos = data.photos.filter(photo => photo.id !== id);
+
+  saveData();
+
+  renderPhotos();
+
+}
+
+function applyTheme() {
+
+  document.body.classList.toggle("dark", data.dark);
+
+  document.getElementById("themeSwitch").classList.toggle("on", data.dark);
+
+}
+
+function toggleTheme() {
+
+  data.dark = !data.dark;
+
+  saveData();
+
+  applyTheme();
+
+}
+
+function clearLocalData() {
+
+  if (!confirm("Удалить все публикации, сообщения, фотографии и настройки этого сайта на этом устройстве?")) return;
+
+  data = structuredClone(defaultData);
+
+  saveData();
+
+  activeSearch = "";
+
+  document.getElementById("searchInput").value = "";
+
+  currentChat = null;
+
+  document.getElementById("chatCard").style.display = "none";
+
+  applyTheme();
+
+  renderProfile();
+
+  renderPosts();
+
+  renderFriends();
+
+  renderMessages();
+
+  renderGroups();
+
+  renderPhotos();
+
+  showNotice("Локальные данные удалены.");
+
+}
+
+applyTheme();
+
+renderProfile();
+
+renderPosts();
+
+renderFriends();
+
+renderMessages();
+
+renderGroups();
+
+renderPhotos();
+
+</script>
+
+</body>
+
+</html>

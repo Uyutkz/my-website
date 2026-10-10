@@ -1,1 +1,287 @@
-<style> #hero{height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;} </style> <div id="hero"> <h1>HELLO!</h1> </div>.
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Уют KZ</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #edeef0;
+    color: #222;
+}
+
+header {
+    background: #2787f5;
+    color: white;
+    padding: 18px 8%;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 20px;
+}
+
+nav a {
+    display: block;
+    padding: 13px;
+    margin-bottom: 5px;
+    color: #456;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+nav a:hover {
+    background: #dce9f7;
+    color: #2787f5;
+}
+
+main {
+    min-width: 0;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    color: #2787f5;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 15px;
+}
+
+button {
+    background: #2787f5;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    font: inherit;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.post {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #777;
+}
+
+max-width: 600px {
+    header {
+        padding: 18px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        margin-top: 10px;
+    }
+
+    nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>Уют KZ</header>
+
+<div class="container">
+
+<nav>
+    <a href="#home" data-page="home">🏠 Главная</a>
+    <a href="#profile" data-page="profile">👤 Моя страница</a>
+    <a href="#news" data-page="news">📰 Новости</a>
+    <a href="#messages" data-page="messages">💬 Сообщения</a>
+    <a href="#friends" data-page="friends">👥 Друзья</a>
+    <a href="#photos" data-page="photos">📷 Фотографии</a>
+    <a href="#groups" data-page="groups">🌐 Сообщества</a>
+    <a href="#settings" data-page="settings">⚙️ Настройки</a>
+</nav>
+
+<main>
+
+<section class="page active" id="home">
+    <div class="card">
+        <h1>Добро пожаловать в Уют KZ!</h1>
+        <p>Твоё пространство для общения, идей и публикаций.</p>
+    </div>
+
+    <div class="card">
+        <h2>Создать публикацию</h2>
+        <textarea id="postText" placeholder="Что у тебя нового?"></textarea>
+        <button id="publish">Опубликовать</button>
+    </div>
+
+    <div class="card">
+        <h2>Лента публикаций</h2>
+        <div id="feed"></div>
+    </div>
+</section>
+
+<section class="page" id="profile">
+    <div class="card">
+        <h1>Моя страница</h1>
+        <p>Добро пожаловать в свой профиль!</p>
+        <p>Здесь можно будет разместить информацию о себе.</p>
+    </div>
+</section>
+
+<section class="page" id="news">
+    <div class="card">
+        <h1>Новости</h1>
+        <p>Новые публикации будут появляться в общей ленте.</p>
+    </div>
+</section>
+
+<section class="page" id="messages">
+    <div class="card">
+        <h1>Сообщения</h1>
+        <p>Для настоящей переписки потребуется подключить сервер.</p>
+    </div>
+</section>
+
+<section class="page" id="friends">
+    <div class="card">
+        <h1>Друзья</h1>
+        <p>Здесь можно будет показывать список пользователей.</p>
+    </div>
+</section>
+
+<section class="page" id="photos">
+    <div class="card">
+        <h1>Фотографии</h1>
+        <p>Здесь будет твоя фотогалерея.</p>
+    </div>
+</section>
+
+<section class="page" id="groups">
+    <div class="card">
+        <h1>Сообщества</h1>
+        <p>Раздел для групп по интересам.</p>
+    </div>
+</section>
+
+<section class="page" id="settings">
+    <div class="card">
+        <h1>Настройки</h1>
+        <p>Настройки сайта можно добавить позже.</p>
+    <>
+</section>
+
+</main>
+</div>
+
+<footer>Уют KZ © 2026</footer>
+
+<script>
+document.querySelectorAll("[data-page]").forEach(link => {
+    link.addEventListener("click", event => {
+        event.preventDefault();
+
+        document.querySelectorAll(".page").forEach(page => {
+            page.classList.remove("active");
+        });
+
+        document.getElementById(link.dataset.page)
+            .classList.add("active");
+
+        history.replaceState(null, "", "#" + link.dataset.page);
+    });
+});
+
+const feed = document.getElementById("feed");
+
+try {
+    const saved = JSON.parse(
+        localStorage.getItem("uyutPosts") || "[]"
+    );
+
+    saved.forEach(text => addPost(text, false));
+} catch (error) {}
+
+function addPost(text, save = true) {
+    const post = document.createElement("div");
+    post.className = "post";
+    post.textContent = "🏡 Уют KZ: " + text;
+
+    feed.prepend(post);
+
+    if (save) {
+        try {
+            const posts = JSON.parse(
+                localStorage.getItem("uyutPosts") || "[]"
+            );
+
+            posts.unshift(text);
+
+            localStorage.setItem(
+                "uyutPosts",
+                JSON.stringify(posts.slice(0, 50))
+            );
+        } catch (error) {}
+    }
+}
+
+document.getElementById("publish").addEventListener("click", () => {
+    const field = document.getElementById("postText");
+    const text = field.value.trim();
+
+    if (!text) {
+        alert("Сначала напиши текст публикации.");
+        return;
+    }
+
+    addPost(text);
+    field.value = "";
+});
+</script>
+
+</body>
+</html>/div

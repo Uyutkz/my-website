@@ -383,7 +383,6 @@ textarea { resize:vertical;min-height:95px; }
 }
 
 .
-MN, [10.10.2026 19:57]
 post-name { font-weight:bold; }
 
 .post-date { color:var(--muted);font-size:12px;margin-top:4px; }
@@ -757,7 +756,6 @@ post-name { font-weight:bold; }
   }
 
   .
-MN, [10.10.2026 19:57]
 sidebar {
 
     position:static;
@@ -941,7 +939,6 @@ sidebar {
           <span class="muted small">Текст увидишь в своей ленте</span>
 
           <button class="primary" onclick="createPost('newsPostText')">Опубликовать</button>
-MN, [10.10.2026 19:57]
 </div>
 
       </div>
@@ -1153,7 +1150,6 @@ function loadData() {
       groups: Array.isArray(data.groups) ? data.groups : [],
 
       photos: Array.isArray(data.photos) ? data.photos : [],
-MN, [10.10.2026 19:57]
 date: new Date().toISOString(),
 
     likes: 0,
@@ -1389,7 +1385,6 @@ function renderChatMessages() {
     ? history.map(message => `
 
       <div class="chat-bubble ${message.mine ? "mine" : ""}">
-MN, [10.10.2026 19:57]
 ${escapeHTML(message.text)}
 
         <div class="small" style="opacity:.7;margin-top:5px">${escapeHTML(formatDate(message.date))}</div>
